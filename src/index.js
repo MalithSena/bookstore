@@ -4,34 +4,42 @@ import ReactDom from 'react-dom';
 //CSS
 import './index.css';
 
+//Creating object
+const books = [
+{
+    img : "https://m.media-amazon.com/images/I/81eB+7+CkUL._AC_UY218_.jpg",
+    title: 'I love you to the moon and back',
+    author: 'Amelia Hepworth'
+},
+{
+    img : "https://m.media-amazon.com/images/I/71aLultW5EL._AC_UY218_.jpg",
+    title: 'Our Class is a Family',
+    author: 'Shannon Oslen'
+}
+]
+
 function BookList(){
     return(
         <section className="booklist">
-            <Book />
-            <Book />
-            <Book />
-            <Book />
-            <Book />
-            <Book />
-            <Book />
-            <Book />
-            <Book />
-            <Book />
+           {books}
         </section>
     )
 }
 
-const Book = () => {
+// const Book = (props) => {  
+    // const {img, title, author} = props
+//const Book = ({img,title, author, children}) => {  
+const Book = (props)=>{
+     const {img, title, author} = props;
     return( 
     <article className="book">
-       <Image />
-       <Title />
-       <Author />
+       <img src={img} alt=""/>
+       <h1>{title}</h1>
+       <h4>{author}</h4>
+       
     </article>
     )
 };
 
-const Image = () => <img src="https://m.media-amazon.com/images/I/81eB+7+CkUL._AC_UY218_.jpg" alt="" />
-const Title = () => <h1>I love you back to the moon and more</h1>
-const Author = () => <h2>Amelia Hepworth</h2>
+
 ReactDom.render(<BookList />, document.getElementById('root'));
